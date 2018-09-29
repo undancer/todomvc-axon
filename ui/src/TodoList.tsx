@@ -1,24 +1,30 @@
 import * as React from "react";
 import TodoItem from "./TodoItem";
 import {connect} from "react-redux";
-import {RouteComponentProps} from "react-router";
 
 const mapStateToProps = (state: any) => ({
-    items: state.todo.items
+    editing: state.todo.editing,
 });
 
 interface TodoListProps {
-    items: Todo[]
+    editing: number,
+    list: Todo[]
 }
 
-class TodoList extends React.Component<TodoListProps, RouteComponentProps> {
+class TodoList extends React.Component<TodoListProps> {
     render() {
-        const {items} = this.props;
+        const {list, editing} = this.props;
         return (
             <ul className="todo-list">
                 {
-                    items.map((item: Todo) => (
-                        <TodoItem key={item.id} text={item.text} completed={item.completed}/>
+                    list.map((item: Todo) => (
+                        <TodoItem
+                            key={item.id}
+                            id={item.id}
+                            title={item.title}
+                            completed={item.completed}
+                            editing={editing === item.id}
+                        />
                     ))
                 }
             </ul>

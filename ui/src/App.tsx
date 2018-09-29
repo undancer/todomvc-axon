@@ -3,9 +3,9 @@ import * as React from 'react';
 import 'todomvc-app-css/index.css';
 import Footer from "./Footer";
 import Header from "./Header";
-import TodoList from "./TodoList";
-import {RouteComponentProps, withRouter} from "react-router";
+import {Route, RouteComponentProps, Switch, withRouter} from "react-router";
 import TogglePanel from "./TogglePanel";
+import FilteredList from "./FilteredList";
 
 class App extends React.Component<RouteComponentProps> {
     public render() {
@@ -14,7 +14,17 @@ class App extends React.Component<RouteComponentProps> {
                 <Header/>
                 <section className="main">
                     <TogglePanel/>
-                    <TodoList/>
+                    <Switch>
+                        <Route exact path="/">
+                            <FilteredList filter="all"/>
+                        </Route>
+                        <Route path="/active">
+                            <FilteredList filter="active"/>
+                        </Route>
+                        <Route path="/completed">
+                            <FilteredList filter="completed"/>
+                        </Route>
+                    </Switch>
                 </section>
                 <Footer/>
             </section>

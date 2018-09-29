@@ -42,17 +42,17 @@
                         </configuration>
                     </execution>
                     <!--<execution>-->
-                        <!--<id>yarn-test</id>-->
-                        <!--<phase>generate-test-resources</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>exec</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<executable>yarn</executable>-->
-                            <!--<arguments>-->
-                                <!--<argument>test</argument>-->
-                            <!--</arguments>-->
-                        <!--</configuration>-->
+                    <!--<id>yarn-test</id>-->
+                    <!--<phase>generate-test-resources</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>exec</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!--<executable>yarn</executable>-->
+                    <!--<arguments>-->
+                    <!--<argument>test</argument>-->
+                    <!--</arguments>-->
+                    <!--</configuration>-->
                     <!--</execution>-->
                 </executions>
             </plugin>
@@ -71,7 +71,7 @@
         <resources>
             <resource>
                 <directory>build</directory>
-                <targetPath>META-INF/static</targetPath>
+                <targetPath>META-INF/resources</targetPath>
                 <filtering>true</filtering>
             </resource>
         </resources>

@@ -250,3 +250,8 @@ gradle-app.setting
 
 
 # End of https://www.gitignore.io/api/java,macos,maven,kotlin,gradle,intellij,node
+
+
+#自定义忽略文件
+
+build/

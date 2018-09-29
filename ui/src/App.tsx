@@ -4,15 +4,16 @@ import 'todomvc-app-css/index.css';
 import Footer from "./Footer";
 import Header from "./Header";
 import TodoList from "./TodoList";
+import {RouteComponentProps, withRouter} from "react-router";
+import TogglePanel from "./TogglePanel";
 
-class App extends React.Component {
+class App extends React.Component<RouteComponentProps> {
     public render() {
         return (
             <section className="todoapp">
                 <Header/>
                 <section className="main">
-                    <input id="toggle-all" className="toggle-all" type="checkbox"/>
-                    <label htmlFor="toggle-all">Mark all as complete</label>
+                    <TogglePanel/>
                     <TodoList/>
                 </section>
                 <Footer/>
@@ -21,4 +22,4 @@ class App extends React.Component {
     }
 }
 
-export default App;
+export default withRouter(App);

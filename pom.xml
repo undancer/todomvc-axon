@@ -13,6 +13,7 @@
         <module>web-ui</module>
         <module>ui</module>
         <module>data</module>
+        <module>domain</module>
     </modules>
 
     <properties>
@@ -40,6 +41,12 @@
             <dependency>
                 <groupId>org.axonframework</groupId>
                 <artifactId>axon-core</artifactId>
+                <version>${axon.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.axonframework/axon-spring -->
+            <dependency>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-spring</artifactId>
                 <version>${axon.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.axonframework/axon-spring-boot-starter -->

@@ -12,6 +12,7 @@
         <module>core-api</module>
         <module>web-ui</module>
         <module>ui</module>
+        <module>data</module>
     </modules>
 
     <properties>

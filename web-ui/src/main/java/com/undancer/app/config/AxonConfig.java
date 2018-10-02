@@ -22,6 +22,7 @@ public class AxonConfig {
         return new JpaEventStorageEngine(entityManagerProvider(), transactionManager());
     }
 
+    @Bean
     public EntityManagerProvider entityManagerProvider() {
         return new ContainerManagedEntityManagerProvider();
     }

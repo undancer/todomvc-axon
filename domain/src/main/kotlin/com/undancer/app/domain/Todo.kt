@@ -29,7 +29,7 @@ class Todo {
 
     @CommandHandler
     constructor(command: CreateTodoCommand) {
-        //        apply(new CreatedTodoEvent(command.getId(), command.getTitle()), MetaData.with("name", "undancer"));
+//        apply(CreatedTodoEvent(command.id, command.title), MetaData.with("name", "undancer"));
         apply(CreatedTodoEvent(command.id, command.title))
     }
 
@@ -37,7 +37,7 @@ class Todo {
     fun on(command: ChangeTodoTitleCommand) {
         println(this)
         println(command)
-        apply(ChangedTodoTitleEvent(id!!, command.title))
+        apply(ChangedTodoTitleEvent(command.id, command.title))
     }
 
     @CommandHandler

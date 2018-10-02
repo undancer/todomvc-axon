@@ -5,6 +5,18 @@ spring:
     password: breath
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    #spring.jpa.properties.hibernate.dialect.storage_engine=innodb
     database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
+    show-sql: true
+    generate-ddl: true
 
+logging:
+  level:
+    org.axonframework: DEBUG
+    
+#axon:
+#  serializer:
+#    general: jackson
+#    events: jackson
+#    messages: jackson
 ---

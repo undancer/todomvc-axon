@@ -1,5 +1,17 @@
-package com.undancer.app
+package com.undancer.app.evnets
 
-data class CreatedTodo(
-        var id: String
+import com.undancer.app.values.TodoId
+
+data class CreatedTodoEvent(
+        val id: TodoId,
+        val title: String
+)
+
+data class ChangedTodoTitleEvent(
+        val id: TodoId,
+        val title: String
+)
+
+data class DeletedTodoEvent(
+        val id: TodoId
 )

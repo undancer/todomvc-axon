@@ -6,12 +6,12 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class TodoItem {
-    @Id
-    @GeneratedValue
-    var id: Long? = null
-    @Basic
-    var title: String? = null
-    @Basic
-    var compiled: Boolean? = null
-}
+class TodoItem(
+        @Id
+        @GeneratedValue
+        var id: Long,
+        @Basic
+        var title: String,
+        @Basic
+        var completed: Boolean
+)

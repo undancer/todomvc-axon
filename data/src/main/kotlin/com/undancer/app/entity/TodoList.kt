@@ -5,8 +5,10 @@ import javax.persistence.*
 @Entity
 @Table(name = "todo")
 class TodoList(
+
         @Id
         var id: String,
+
         @ElementCollection
         @JoinTable(
                 name = "todo_list",
@@ -14,4 +16,5 @@ class TodoList(
                 inverseJoinColumns = [JoinColumn(name = "todo_item_id", referencedColumnName = "id")]
         )
         var list: List<TodoItem>
+
 )

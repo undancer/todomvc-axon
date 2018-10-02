@@ -1,13 +1,17 @@
 package com.undancer.app.entity
 
-import javax.persistence.ElementCollection
-import javax.persistence.Entity
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
+@Table(name = "todo")
 class TodoList(
         @Id
         var id: String,
         @ElementCollection
+        @JoinTable(
+                name = "todo_list",
+                joinColumns = [JoinColumn(name = "todo_id", referencedColumnName = "id")],
+                inverseJoinColumns = [JoinColumn(name = "todo_item_id", referencedColumnName = "id")]
+        )
         var list: List<TodoItem>
 )

@@ -1,4 +1,4 @@
-package com.undancer.app
+package com.undancer.app.values
 
 import org.axonframework.common.IdentifierFactory
 import java.io.Serializable

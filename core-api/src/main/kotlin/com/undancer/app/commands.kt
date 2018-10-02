@@ -1,5 +1,6 @@
-package com.undancer.app
+package com.undancer.app.commands
 
+import com.undancer.app.values.TodoId
 import org.axonframework.commandhandling.TargetAggregateIdentifier
 
 data class CreateTodoCommand(

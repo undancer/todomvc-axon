@@ -10,7 +10,7 @@
         <module name="data" />
         <module name="domain" />
         <module name="ui" />
-        <module name="web-ui" />
+        <module name="web" />
       </profile>
     </annotationProcessing>
   </component>

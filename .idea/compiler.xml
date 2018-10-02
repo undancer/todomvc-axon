@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core-api" />
         <module name="data" />
+        <module name="domain" />
         <module name="ui" />
         <module name="web-ui" />
       </profile>

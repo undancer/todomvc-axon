@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web-ui</artifactId>
+    <artifactId>todo-web</artifactId>
+    <name>Todo :: Web</name>
 
     <dependencies>
         <dependency>
@@ -45,12 +46,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>data</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>domain</artifactId>
+            <artifactId>todo-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -63,13 +59,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>core-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>ui</artifactId>
+            <artifactId>todo-ui</artifactId>
             <version>${project.version}</version>
         </dependency>
 

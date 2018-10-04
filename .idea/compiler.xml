@@ -6,12 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="core-api" />
+        <module name="core" />
         <module name="data" />
         <module name="domain" />
         <module name="ui" />
         <module name="web" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="todo-core" target="1.8" />
+      <module name="todo-entity" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

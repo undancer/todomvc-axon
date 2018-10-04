@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>data</artifactId>
+    <artifactId>todo-data</artifactId>
+    <name>Todo :: Data</name>
 
     <dependencies>
         <dependency>
@@ -23,7 +24,7 @@
 
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>core-api</artifactId>
+            <artifactId>todo-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 

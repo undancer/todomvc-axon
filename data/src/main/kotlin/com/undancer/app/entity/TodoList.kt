@@ -1,5 +1,6 @@
 package com.undancer.app.entity
 
+import com.google.common.collect.Lists
 import javax.persistence.*
 
 @Entity
@@ -15,6 +16,6 @@ class TodoList(
                 joinColumns = [JoinColumn(name = "todo_id", referencedColumnName = "id")],
                 inverseJoinColumns = [JoinColumn(name = "todo_item_id", referencedColumnName = "id")]
         )
-        var list: List<TodoItem>
+        var list: List<TodoItem> = Lists.newArrayList()
 
 )

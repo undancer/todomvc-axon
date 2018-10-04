@@ -2,6 +2,7 @@ package com.undancer.app.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.web.reactive.config.WebFluxConfigurer
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
@@ -12,7 +13,8 @@ class WebConfig {
     fun webMvcConfigurer(): WebMvcConfigurer = object : WebMvcConfigurer {
         override fun addCorsMappings(registry: org.springframework.web.servlet.config.annotation.CorsRegistry
         ) {
-            registry.addMapping("/**")
+            val methods = HttpMethod.values().map { it.name }.toTypedArray()
+            registry.addMapping("/**").allowedMethods(*methods)
         }
     }
 
@@ -20,7 +22,8 @@ class WebConfig {
     @Bean
     fun webFluxConfigurer(): WebFluxConfigurer = object : WebFluxConfigurer {
         override fun addCorsMappings(registry: org.springframework.web.reactive.config.CorsRegistry) {
-            registry.addMapping("/**")
+            val methods = HttpMethod.values().map { it.name }.toTypedArray()
+            registry.addMapping("/**").allowedMethods(*methods)
         }
     }
 

@@ -5,7 +5,9 @@ import com.undancer.app.entity.TodoList
 import com.undancer.app.entity.jpa.TodoItemJpaRepository
 import com.undancer.app.entity.jpa.TodoListJpaRepository
 import com.undancer.app.evnets.*
+import com.undancer.app.querys.FindTodoItemQuery
 import org.axonframework.eventhandling.EventHandler
+import org.axonframework.queryhandling.QueryHandler
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
@@ -16,6 +18,12 @@ class TodoListProjection {
     lateinit var todoListJpaRepository: TodoListJpaRepository
     @Autowired
     lateinit var todoItemJpaRepository: TodoItemJpaRepository
+
+    @QueryHandler
+    fun on(query: FindTodoItemQuery): List<TodoItem> {
+        var todoList = todoListJpaRepository.findTodoListById(query.id.identifier)
+        return todoList.list
+    }
 
     @EventHandler
     fun on(event: CreatedTodoListEvent) {

@@ -4,24 +4,24 @@ import classNames from "classnames";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {KEY_ESCAPE, KEY_RETURN} from "keycode-js";
-import {cancelTodo, destroyTodoAction, editTodo, editTodoAction, toggleTodoAction} from "./actions";
+import {cancelTodo, editTodo, todoActions} from "./actions";
 
 const mapStateToProps = (state: {}) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
 
     // @ts-ignore
-    changeStatus: (id: number, completed: boolean) => dispatch(toggleTodoAction(id, completed)),
+    changeStatus: (id: number, completed: boolean) => dispatch(todoActions.toggleTodo(id, completed)),
 
     onEdit: (id: number) => dispatch(editTodo(id)),
 
     // @ts-ignore
-    onSave: (id: number, text: string) => dispatch(editTodoAction(id, text)),
+    onSave: (id: number, text: string) => dispatch(todoActions.editTodo(id, text)),
 
     onCancel: (id: number) => dispatch(cancelTodo(id)),
-    
+
     // @ts-ignore
-    onDestroy: (id: number) => dispatch(destroyTodoAction(id)),
+    onDestroy: (id: number) => dispatch(todoActions.destroyTodo(id)),
 });
 
 interface TodoItemProps {

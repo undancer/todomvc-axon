@@ -2,13 +2,13 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import Input from "./Input";
-import {addTodoAction} from "./actions";
+import {todoActions} from "./actions";
 
 const mapStateToProps = (state: {}) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
 // @ts-ignore
-    addNew: (title: string) => dispatch(addTodoAction(title)),
+    addNew: (title: string) => dispatch(todoActions.addTodo(title)),
 });
 
 interface TodoTextInputProps {

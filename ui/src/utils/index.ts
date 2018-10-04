@@ -3,7 +3,6 @@ const FILTER_ACTIVE = 'active';
 const FILTER_COMPLETED = 'completed';
 
 const applyFilter = (list: Todo[], filter: string) => {
-    console.log(filter);
     switch (filter) {
         case FILTER_COMPLETED:
             return list.filter((item: Todo) => item.completed === true);

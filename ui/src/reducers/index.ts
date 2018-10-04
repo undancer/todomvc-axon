@@ -9,18 +9,24 @@ import {
     TYPE_EDIT,
     TYPE_TOGGLE_ALL
 } from "../actions";
-import {addToList, deleteItem, getAll, updateStatus, updateText} from "../utils/data";
+import {addToList, deleteItem, updateStatus, updateText} from "../utils/data";
 
 interface TodoState {
     items: Todo[]
 }
 
 const initState: TodoState = {
-    items: getAll()
+    items: []
 };
 
 const todo = (state: TodoState = initState, action: any) => {
     switch (action.type) {
+        case "init": {
+            return {...state, todo: action.todo}
+        }
+        case "init-data": {
+            return {...state, items: action.items}
+        }
         case TYPE_EDIT: {
             return {...state, editing: action.id}
         }

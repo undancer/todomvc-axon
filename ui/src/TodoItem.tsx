@@ -4,21 +4,24 @@ import classNames from "classnames";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import {KEY_ESCAPE, KEY_RETURN} from "keycode-js";
-import {cancelTodo, destroyTodo, editTodo, saveTodo, toggleTodo} from "./actions";
+import {cancelTodo, destroyTodoAction, editTodo, editTodoAction, toggleTodoAction} from "./actions";
 
 const mapStateToProps = (state: {}) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
 
-    changeStatus: (id: number, completed: boolean) => dispatch(toggleTodo(id, completed)),
+    // @ts-ignore
+    changeStatus: (id: number, completed: boolean) => dispatch(toggleTodoAction(id, completed)),
 
     onEdit: (id: number) => dispatch(editTodo(id)),
 
-    onSave: (id: number, text: string) => dispatch(saveTodo(id, text)),
+    // @ts-ignore
+    onSave: (id: number, text: string) => dispatch(editTodoAction(id, text)),
 
     onCancel: (id: number) => dispatch(cancelTodo(id)),
-
-    onDestroy: (id: number) => dispatch(destroyTodo(id)),
+    
+    // @ts-ignore
+    onDestroy: (id: number) => dispatch(destroyTodoAction(id)),
 });
 
 interface TodoItemProps {
@@ -38,9 +41,6 @@ interface TodoItemState {
     editValue: string;
 }
 
-// Create a TodoMVC template
-// Rule the web
-
 class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
 
     constructor(props: TodoItemProps) {
@@ -57,9 +57,13 @@ class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
 
     handleBlur = (event: FocusEvent<HTMLInputElement>) => {
         const editValue = this.state.editValue;
-        const {id, onSave, onDestroy} = this.props;
+        const {id, title, onSave, onCancel, onDestroy} = this.props;
         if (editValue) {
-            onSave(id, editValue);
+            if (editValue !== title) {
+                onSave(id, editValue);
+            } else {
+                onCancel(id);
+            }
         } else {
             onDestroy(id);
         }
@@ -74,8 +78,12 @@ class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
         switch (event.keyCode) {
             case KEY_RETURN: {
                 const {editValue} = this.state;
-                const {id, onSave} = this.props;
-                onSave(id, editValue);
+                const {id, title, onSave, onCancel} = this.props;
+                if (editValue !== title) {
+                    onSave(id, editValue);
+                } else {
+                    onCancel(id);
+                }
             }
                 break;
             case KEY_ESCAPE: {

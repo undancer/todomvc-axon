@@ -2,16 +2,17 @@ import * as React from "react";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";
 import Input from "./Input";
-import {newTodo} from "./actions";
+import {addTodoAction} from "./actions";
 
 const mapStateToProps = (state: {}) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    addNew: (value: string) => dispatch(newTodo(value)),
+// @ts-ignore
+    addNew: (title: string) => dispatch(addTodoAction(title)),
 });
 
 interface TodoTextInputProps {
-    addNew: (value: string) => void
+    addNew: (title: string) => void
 }
 
 class TodoTextInput extends React.Component<TodoTextInputProps> {

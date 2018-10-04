@@ -6,8 +6,28 @@ import Header from "./Header";
 import {Route, RouteComponentProps, Switch, withRouter} from "react-router";
 import TogglePanel from "./TogglePanel";
 import FilteredList from "./FilteredList";
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
+import {initData} from "./actions";
 
-class App extends React.Component<RouteComponentProps> {
+const mapStateToProps = (state: any) => ({});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+// @ts-ignore
+    initData: () => dispatch(initData())
+});
+
+interface AppProps {
+    initData: () => void
+}
+
+class App extends React.Component<AppProps & RouteComponentProps> {
+
+    componentDidMount() {
+        const {initData} = this.props;
+        initData();
+    }
+
     public render() {
         return (
             <section className="todoapp">
@@ -32,4 +52,4 @@ class App extends React.Component<RouteComponentProps> {
     }
 }
 
-export default withRouter(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

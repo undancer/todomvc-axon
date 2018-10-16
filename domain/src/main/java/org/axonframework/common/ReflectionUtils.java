@@ -278,7 +278,14 @@ public abstract class ReflectionUtils {
                 || ((ParameterizedType) genericType).getActualTypeArguments().length <= genericTypeIndex) {
             return Optional.empty();
         }
-        return Optional.of((Class<?>) ((ParameterizedType) genericType).getActualTypeArguments()[genericTypeIndex]);
+        
+        Type type = ((ParameterizedType) genericType).getActualTypeArguments()[genericTypeIndex];
+
+        if (type instanceof WildcardType) {
+            type = ((WildcardType) type).getUpperBounds()[0];
+        }
+
+        return Optional.of((Class<?>) type);
     }
 
     private ReflectionUtils() {

@@ -1,19 +1,17 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/breath?useSSL=false
+    url: jdbc:mysql://localhost:3306/breath?useSSL=false&allowPublicKeyRetrieval=true
     username: breath
     password: breath
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    #spring.jpa.properties.hibernate.dialect.storage_engine=innodb
-    database-platform: org.hibernate.dialect.MySQL57InnoDBDialect
     show-sql: true
     generate-ddl: true
 
 logging:
   level:
     org.axonframework: DEBUG
-    
+
 #axon:
 #  serializer:
 #    general: jackson

@@ -10,6 +10,7 @@ import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
 class TodoListProjection {
@@ -21,12 +22,18 @@ class TodoListProjection {
 
     @QueryHandler
     fun on(query: FindTodoItemQuery): List<TodoItem> {
-        var todoList = todoListJpaRepository.findTodoListById(query.id.identifier)
-        return todoList.list
+        var todoList = todoListJpaRepository.findById(query.id.identifier)
+
+        if (todoList.isPresent) {
+            return todoList.get().list
+        } else {
+            return emptyList()
+        }
     }
 
     @EventHandler
     fun on(event: CreatedTodoListEvent) {
+//        event.toTodoList().save()
         var obj: TodoList = TodoList(event.todoId.identifier)
         obj.save()
     }
@@ -72,7 +79,8 @@ class TodoListProjection {
     }
 
     fun TodoListEvent.toTodoList(): TodoList {
-        return todoListJpaRepository.findTodoListById(this.todoId.identifier)
+        val todoList: Optional<TodoList> = todoListJpaRepository.findById(this.todoId.identifier)
+        return todoList.orElse(TodoList(this.todoId.identifier))
     }
 
     fun TodoItem.save(): TodoItem {

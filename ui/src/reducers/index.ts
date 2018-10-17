@@ -34,7 +34,7 @@ const todo = (state: TodoState = initState, action: any) => {
             return {...state, editing: null}
         }
         case TYPE_ADD_NEW_TODO: {
-            const updatedList = addToList(state.items, {title: action.value, completed: false});
+            const updatedList = addToList(state.items, {title: action.title, completed: false});
             return {...state, items: updatedList};
         }
         case TYPE_CHANGE_STATUS: {

@@ -40,9 +40,11 @@ class TodoListProjection {
 
     @EventHandler
     fun on(event: AddedTodoItemEvent) {
-        event.toTodoList().apply {
-            this.list += TodoItem(title = event.title, completed = event.completed).save()
-        }.save()
+        event.toTodoList()
+                .apply {
+                    this.list += TodoItem(title = event.title, completed = event.completed).save()
+                }
+                .save()
     }
 
     @EventHandler
@@ -78,7 +80,7 @@ class TodoListProjection {
         }.save()
     }
 
-    fun TodoListEvent.toTodoList(): TodoList {
+    fun TodoEvent.toTodoList(): TodoList {
         val todoList: Optional<TodoList> = todoListJpaRepository.findById(this.todoId.identifier)
         return todoList.orElse(TodoList(this.todoId.identifier))
     }

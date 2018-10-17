@@ -4,10 +4,20 @@ import com.undancer.app.values.TodoId
 import org.axonframework.commandhandling.TargetAggregateIdentifier
 
 
-abstract class TodoListEvent(
+abstract class TodoEvent(
         @TargetAggregateIdentifier
         open val todoId: TodoId
 )
+
+
+abstract class TodoListEvent(
+        override val todoId: TodoId
+) : TodoEvent(todoId)
+
+
+abstract class TodoItemEvent(
+        override val todoId: TodoId
+) : TodoEvent(todoId)
 
 data class CreatedTodoListEvent(
         override val todoId: TodoId
@@ -21,21 +31,21 @@ data class AddedTodoItemEvent(
         override val todoId: TodoId,
         val title: String,
         val completed: Boolean = false
-) : TodoListEvent(todoId)
+) : TodoItemEvent(todoId)
 
 data class DestroyedTodoItemEvent(
         override val todoId: TodoId,
         val id: Long
-) : TodoListEvent(todoId)
+) : TodoItemEvent(todoId)
 
 data class EditedTodoItemEvent(
         override val todoId: TodoId,
         val id: Long,
         val title: String
-) : TodoListEvent(todoId)
+) : TodoItemEvent(todoId)
 
 data class ToggledTodoItemEvent(
         override val todoId: TodoId,
         val id: Long,
         val completed: Boolean
-) : TodoListEvent(todoId)
+) : TodoItemEvent(todoId)

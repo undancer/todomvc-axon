@@ -30,7 +30,7 @@
         <jackson.version>2.9.9</jackson.version>
         <guava.version>28.0-jre</guava.version>
         <commons-lang3.version>3.9</commons-lang3.version>
-        <mysql.version>8.0.17</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
     </properties>
 
     <dependencyManagement>

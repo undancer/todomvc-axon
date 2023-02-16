@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'com.github.node-gradle.node'
+}
+
+node {
+//    version = "19.5.0"
+//    download = true
+//    npmVersion = "9.3.1"
+//    yarnVersion = "1.22.19"
+}
+
+tasks.register("yarnBuild", YarnTask) {
+    dependsOn(yarnSetup)
+    group = 'node'
+    args = ['run', 'build']
+}
+
+jar {
+    dependsOn(tasks.named("yarnBuild"))
+    group = 'build'
+    from("build") {
+        include("index.html", "favicon.ico")
+        include("manifest.json", "asset-manifest.json")
+        include("*.js")
+        include("static/**/*")
+        into("META-INF/resources")
+    }
+}

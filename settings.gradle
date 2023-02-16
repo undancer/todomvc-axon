@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        maven {
+            url = "http://localhost:8081/repository/maven-public/"
+            allowInsecureProtocol = true
+        }
+    }
+}
+
+
+//rootProject.name = 'app'
+rootProject.name = '__TodoMvc_Axon__'
+
+include(":core")
+include(":data")
+include(":domain")
+include(":ui")
+include(":web")

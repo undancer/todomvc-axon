@@ -1,0 +1,14 @@
+plugins {
+
+}
+
+
+// <artifactId>todo-domain</artifactId>
+// <name>Todo :: Domain</name>
+
+dependencies {
+    implementation project(":core")
+    implementation project(":data")
+    implementation 'org.axonframework:axon-spring'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+}

@@ -1,0 +1,138 @@
+//plugins {
+//    id 'java'
+//}
+//
+//group 'org.example'
+//version '1.0-SNAPSHOT'
+//
+buildscript {
+
+    repositories {
+        maven {
+            url = "http://localhost:8081/repository/maven-public/"
+            allowInsecureProtocol = true
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+
+    dependencies {
+        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.property('spring-boot.version')}"
+        // https://mvnrepository.com/artifact/io.spring.dependency-management/io.spring.dependency-management.gradle.plugin
+        classpath "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin:${project.property('dependency-management.version')}"
+//        // https://mvnrepository.com/artifact/org.hibernate.orm/org.hibernate.orm.gradle.plugin
+//        classpath "org.hibernate.orm:org.hibernate.orm.gradle.plugin:${project.property('hibernate.version')}"
+//        // https://mvnrepository.com/artifact/org.graalvm.buildtools.native/org.graalvm.buildtools.native.gradle.plugin
+//        classpath "org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:${project.property('graalvm.version')}"
+//        // https://mvnrepository.com/artifact/org.asciidoctor.convert/org.asciidoctor.convert.gradle.plugin
+//        classpath "org.asciidoctor.convert:org.asciidoctor.convert.gradle.plugin:${project.property('asciidoctor.version')}"
+        // https://mvnrepository.com/artifact/org.jetbrains.kotlin.jvm/org.jetbrains.kotlin.jvm.gradle.plugin
+        classpath "org.jetbrains.kotlin.jvm:org.jetbrains.kotlin.jvm.gradle.plugin:${project.property('kotlin.version')}"
+        // https://mvnrepository.com/artifact/org.jetbrains.kotlin.kapt/org.jetbrains.kotlin.kapt.gradle.plugin
+        classpath "org.jetbrains.kotlin.kapt:org.jetbrains.kotlin.kapt.gradle.plugin:${project.property('kotlin.version')}"
+        // https://mvnrepository.com/artifact/org.jetbrains.kotlin.plugin.spring/org.jetbrains.kotlin.plugin.spring.gradle.plugin
+        classpath "org.jetbrains.kotlin.plugin.spring:org.jetbrains.kotlin.plugin.spring.gradle.plugin:${project.property('kotlin.version')}"
+        // https://mvnrepository.com/artifact/org.jetbrains.kotlin.plugin.jpa/org.jetbrains.kotlin.plugin.jpa.gradle.plugin
+        classpath "org.jetbrains.kotlin.plugin.jpa:org.jetbrains.kotlin.plugin.jpa.gradle.plugin:${project.property('kotlin.version')}"
+//        // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-gradle-plugin
+//        classpath "com.google.protobuf:protobuf-gradle-plugin:0.9.2"
+
+        // https://mvnrepository.com/artifact/com.github.node-gradle/gradle-node-plugin
+        classpath("com.github.node-gradle:gradle-node-plugin:3.5.1")
+    }
+
+}
+
+allprojects {
+
+    apply {
+        plugin 'base'
+        plugin 'java'
+
+        plugin 'org.jetbrains.kotlin.jvm'
+        plugin 'org.jetbrains.kotlin.kapt'
+        plugin 'org.jetbrains.kotlin.plugin.spring'
+        plugin 'org.jetbrains.kotlin.plugin.jpa'
+
+//        plugin 'org.springframework.boot'
+        plugin 'io.spring.dependency-management'
+
+//        plugin 'org.graalvm.buildtools.native'
+//        plugin 'org.asciidoctor.convert'
+//        plugin 'org.hibernate.orm'
+
+//        plugin 'com.google.protobuf'
+
+//        plugin 'idea'
+    }
+
+    group 'org.example'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        maven {
+            url = "http://localhost:8081/repository/maven-public/"
+            allowInsecureProtocol = true
+        }
+
+        mavenCentral()
+
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+
+    dependencyManagement {
+        imports {
+//            // https://mvnrepository.com/artifact/org.axonframework/axon-bom
+//            mavenBom "org.axonframework:axon-bom:${project.property('axon.version')}"
+//            // https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-dependencies
+//            mavenBom "org.springframework.shell:spring-shell-dependencies:${project.property('spring-shell.version')}"
+//            // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
+//            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${project.property('spring-cloud.version')}"
+            // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${project.property('spring-boot.version')}"
+//            // https://mvnrepository.com/artifact/org.testcontainers/testcontainers-bom
+//            mavenBom "org.testcontainers:testcontainers-bom:${project.property('testcontainers.version')}"
+//            // https://mvnrepository.com/artifact/com.vaadin/vaadin-bom
+//            mavenBom "com.vaadin:vaadin-bom:${project.property('vaadin.version')}"
+            // https://mvnrepository.com/artifact/com.querydsl/querydsl-bom
+            mavenBom("com.querydsl:querydsl-bom:${property("querydsl.version")}")
+        }
+
+        dependencies {
+            dependencySet(group: 'org.axonframework', version: "${project.property('axon.version')}") {
+                entry 'axon-core'
+                entry 'axon-spring'
+                entry 'axon-spring-boot-starter'
+            }
+            dependencySet(group: 'com.google.guava', version: "${project.property('guava.version')}") {
+                entry 'guava'
+            }
+        }
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of("${project.property('java.version')}")
+        }
+    }
+
+    kotlin {
+        jvmToolchain {
+            languageVersion = JavaLanguageVersion.of("${project.property('java.version')}")
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+}
+
+subprojects {
+
+}

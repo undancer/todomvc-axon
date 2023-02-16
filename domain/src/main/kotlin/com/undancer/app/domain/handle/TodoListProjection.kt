@@ -17,6 +17,7 @@ class TodoListProjection {
 
     @Autowired
     lateinit var todoListJpaRepository: TodoListJpaRepository
+
     @Autowired
     lateinit var todoItemJpaRepository: TodoItemJpaRepository
 
@@ -41,42 +42,42 @@ class TodoListProjection {
     @EventHandler
     fun on(event: AddedTodoItemEvent) {
         event.toTodoList()
-                .apply {
-                    this.list += TodoItem(title = event.title, completed = event.completed).save()
-                }
-                .save()
+            .apply {
+                this.list += TodoItem(title = event.title, completed = event.completed).save()
+            }
+            .save()
     }
 
     @EventHandler
     fun on(event: EditedTodoItemEvent) {
         event.toTodoList()
-                .apply {
-                    this.list
-                            .find { it -> event.id == it.id }
-                            .apply { this?.title = event.title }
-                }
-                .save()
+            .apply {
+                this.list
+                    .find { it -> event.id == it.id }
+                    .apply { this?.title = event.title }
+            }
+            .save()
     }
 
     @EventHandler
     fun on(event: ToggledTodoItemEvent) {
         event.toTodoList()
-                .apply {
-                    this.list
-                            .find { it -> event.id == it.id }
-                            .apply { this?.completed = event.completed }
-                }
-                .save()
+            .apply {
+                this.list
+                    .find { it -> event.id == it.id }
+                    .apply { this?.completed = event.completed }
+            }
+            .save()
     }
 
     @EventHandler
     fun on(event: DestroyedTodoItemEvent) {
         event.toTodoList().apply {
             this.list
-                    .filter { it -> event.id == it.id }
-                    .forEach { it ->
-                        this.list -= it.delete()
-                    }
+                .filter { it -> event.id == it.id }
+                .forEach { it ->
+                    this.list -= it.delete()
+                }
         }.save()
     }
 

@@ -25,11 +25,11 @@ class TodoListController {
 
     @GetMapping
     fun getTodoItem(
-            todo: String
+        todo: String
     ): Flux<TodoItem> {
         var flux = queryGateway.query(
-                FindTodoItemQuery(TodoId(todo)),
-                ResponseTypes.multipleInstancesOf(TodoItem::class.java)
+            FindTodoItemQuery(TodoId(todo)),
+            ResponseTypes.multipleInstancesOf(TodoItem::class.java)
         ).toMono().flatMapMany { it -> Flux.fromIterable(it) }
         return flux
     }
@@ -41,17 +41,17 @@ class TodoListController {
 
     @PostMapping(params = ["todo", "title"])
     fun add(
-            todo: String,
-            title: String
+        todo: String,
+        title: String
     ): Mono<Any> {
         return commandGateway.send<Any>(AddTodoItemCommand(TodoId(todo), title)).toMono()
     }
 
     @PutMapping(params = ["todo", "id", "title"])
     fun edit(
-            todo: String,
-            id: Long,
-            title: String
+        todo: String,
+        id: Long,
+        title: String
     ): Mono<Any> {
         var mono = commandGateway.send<Any>(EditTodoItemCommand(TodoId(todo), id, title)).toMono()
         return mono
@@ -59,9 +59,9 @@ class TodoListController {
 
     @PutMapping(params = ["todo", "id", "completed"])
     fun toggle(
-            todo: String,
-            id: Long,
-            completed: Boolean
+        todo: String,
+        id: Long,
+        completed: Boolean
     ): Mono<Any> {
         var mono = commandGateway.send<Any>(ToggleTodoItemCommand(TodoId(todo), id, completed)).toMono()
         return mono
@@ -69,8 +69,8 @@ class TodoListController {
 
     @DeleteMapping(params = ["todo", "id"])
     fun destroy(
-            todo: String,
-            id: Long
+        todo: String,
+        id: Long
     ): Mono<Any> {
         var mono = commandGateway.send<Any>(DestroyTodoItemCommand(TodoId(todo), id)).toMono()
         return mono

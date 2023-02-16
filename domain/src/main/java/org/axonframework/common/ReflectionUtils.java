@@ -44,6 +44,10 @@ public abstract class ReflectionUtils {
         primitiveWrapperTypeMap.put(short.class, Short.class);
     }
 
+    private ReflectionUtils() {
+        // utility class
+    }
+
     /**
      * Returns the value of the given {@code field} in the given {@code object}. If necessary, the field is
      * made accessible, assuming the security manager allows it.
@@ -59,7 +63,7 @@ public abstract class ReflectionUtils {
         ensureAccessible(field);
         try {
             return (R) field.get(object);
-        } catch(IllegalArgumentException | IllegalAccessException ex) {
+        } catch (IllegalArgumentException | IllegalAccessException ex) {
             throw new IllegalStateException("Unable to access field for getting.", ex);
         }
     }
@@ -77,7 +81,7 @@ public abstract class ReflectionUtils {
         ensureAccessible(field);
         try {
             field.set(object, value);
-        } catch(IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             throw new IllegalStateException("Unable to access field for setting.", ex);
         }
     }
@@ -96,7 +100,7 @@ public abstract class ReflectionUtils {
     public static Class<?> declaringClass(Class<?> instanceClass, String methodName, Class<?>... parameterTypes) {
         try {
             return instanceClass.getMethod(methodName, parameterTypes).getDeclaringClass();
-        } catch(NoSuchMethodException e) {
+        } catch (NoSuchMethodException e) {
             return null;
         }
     }
@@ -278,7 +282,7 @@ public abstract class ReflectionUtils {
                 || ((ParameterizedType) genericType).getActualTypeArguments().length <= genericTypeIndex) {
             return Optional.empty();
         }
-        
+
         Type type = ((ParameterizedType) genericType).getActualTypeArguments()[genericTypeIndex];
 
         if (type instanceof WildcardType) {
@@ -286,9 +290,5 @@ public abstract class ReflectionUtils {
         }
 
         return Optional.of((Class<?>) type);
-    }
-
-    private ReflectionUtils() {
-        // utility class
     }
 }

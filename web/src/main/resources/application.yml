@@ -19,6 +19,7 @@ spring:
 
 logging:
   level:
+#    root: debug
     org.axonframework: DEBUG
 
 #axon:

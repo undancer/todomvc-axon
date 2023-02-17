@@ -33,15 +33,35 @@ import HelloWorld from './components/HelloWorld.vue'
 -->
 
 <script lang="ts" setup>
+import { useMainStore } from './stores'
+import AppFooter from './components/AppFooter.vue'
+import AppHeader from './components/AppHeader.vue'
 
+const mainStore = useMainStore()
+mainStore.fetch()
 </script>
 
 <template>
-  app
+  <section class="todoapp">
+    <AppHeader />
+    <section class="main">
+      <router-view />
+    </section>
+    <AppFooter />
+  </section>
+  <footer class="info">
+    <p>Double-click to edit a todo</p>
+    <!-- Remove the below line ↓ -->
+    <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
+    <!-- Change this out with your name and url ↓ -->
+    <p>Created by <a href="http://todomvc.com">you</a></p>
+    <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+  </footer>
 </template>
 
 <style lang="scss">
-
+@import "todomvc-common/base.css";
+@import "todomvc-app-css/index.css";
 </style>
 
 <style lang="scss" scoped>

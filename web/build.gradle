@@ -21,6 +21,12 @@ dependencies {
 //    implementation 'com.querydsl:querydsl-jpa'
 //    implementation 'javax.persistence:javax.persistence-api:2.2'
     runtimeOnly 'org.postgresql:postgresql'
+    // https://mvnrepository.com/artifact/io.projectreactor.kotlin/reactor-kotlin-extensions
+    implementation 'io.projectreactor.kotlin:reactor-kotlin-extensions'
+
+//    implementation 'io.projectreactor.spring:reactor-spring-webmvc'
+//    implementation 'io.projectreactor:reactor-bom'
+//    implementation 'io.projectreactor:reactor-kotlin-extensions'
     implementation 'com.google.guava:guava'
     implementation 'org.apache.commons:commons-lang3'
 }

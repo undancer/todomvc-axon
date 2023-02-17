@@ -99,8 +99,8 @@ allprojects {
 //            mavenBom "org.testcontainers:testcontainers-bom:${project.property('testcontainers.version')}"
 //            // https://mvnrepository.com/artifact/com.vaadin/vaadin-bom
 //            mavenBom "com.vaadin:vaadin-bom:${project.property('vaadin.version')}"
-            // https://mvnrepository.com/artifact/com.querydsl/querydsl-bom
-            mavenBom("com.querydsl:querydsl-bom:${property("querydsl.version")}")
+//            // https://mvnrepository.com/artifact/com.querydsl/querydsl-bom
+//            mavenBom("com.querydsl:querydsl-bom:${property("querydsl.version")}")
         }
 
         dependencies {

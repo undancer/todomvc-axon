@@ -16,17 +16,26 @@ tasks.register("yarnBuild", YarnTask) {
     args = ['run', 'build']
 }
 
+tasks.register("pnpmBuild", PnpmTask) {
+    dependsOn(pnpmSetup)
+    group = 'node'
+    args = ['run', 'build']
+}
+
 jar {
-    dependsOn(tasks.named("yarnBuild"))
+//    dependsOn(tasks.named("yarnBuild"))
+    dependsOn(tasks.named("pnpmBuild"))
     group = 'build'
+    // https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#application-properties.web.spring.web.resources.static-locations
     from("dist") {
         include("index.html")
-        include("assets/**/*")
+//        include("assets/**/*")
         into("META-INF/resources")
     }
-//    from("dist") {
+    from("dist") {
 //        include("index.html")
-//        include("assets/**/*")
-//        into("META-INF/static")
-//    }
+        include("vite.svg")
+        include("assets/**/*")
+        into("static")
+    }
 }

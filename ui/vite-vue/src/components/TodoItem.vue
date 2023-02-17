@@ -1,26 +1,29 @@
-<!--
-<template>
-  <li class="completed">
-    <div class="view">
-      <input checked class="toggle" type="checkbox">
-      <label>Taste JavaScript</label>
-      <button class="destroy"></button>
-    </div>
-    <input class="edit" value="Create a TodoMVC template">
-  </li>
-</template>
--->
 <script lang="ts" setup>
-// defineProps()
+import { defineProps, withDefaults } from 'vue-demi'
+
+withDefaults(defineProps<{
+  id?: number
+  title?: string
+  desc?: string
+  checked?: boolean
+  completed?: boolean
+  editing?: boolean
+}>(), {
+  title: 'default title',
+  desc: 'default desc',
+  checked: false,
+  completed: false,
+  editing: false,
+})
 </script>
 
 <template>
-  <li>
+  <li :class="{ completed }">
     <div class="view">
-      <input class="toggle" type="checkbox">
-      <label>Buy a unicorn</label>
+      <input :checked="checked" class="toggle" type="checkbox">
+      <label>{{ title || 'Buy a unicorn' }}</label>
       <button class="destroy" />
     </div>
-    <input class="edit" value="Rule the web">
+    <input class="edit" value="{{desc || 'Rule the web'}}">
   </li>
 </template>

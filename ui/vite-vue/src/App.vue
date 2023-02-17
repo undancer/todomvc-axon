@@ -1,3 +1,4 @@
+<!--
 <script lang="ts" setup>
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -28,4 +29,21 @@ import HelloWorld from './components/HelloWorld.vue'
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
+</style>
+-->
+
+<script lang="ts" setup>
+
+</script>
+
+<template>
+  app
+</template>
+
+<style lang="scss">
+
+</style>
+
+<style lang="scss" scoped>
+
 </style>

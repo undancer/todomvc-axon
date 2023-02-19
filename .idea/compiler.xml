@@ -3,4 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11" />
   </component>
+  <component name="TypeScriptCompiler">
+    <option name="typeScriptServiceDirectory" value="$PROJECT_DIR$/ui/vite-vue/node_modules/typescript" />
+    <option name="versionType" value="SERVICE_DIRECTORY" />
+  </component>
 </project>

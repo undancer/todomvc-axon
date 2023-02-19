@@ -6,5 +6,11 @@ module.exports = {
     '@antfu',
   ],
   ignorePatterns: [],
-  overrides: [],
+  overrides: [{
+    files: ['*.ts'],
+    rules: {
+      'no-console': 'warn',
+      // 'unused-imports/no-unused-vars': 'warn',
+    },
+  }],
 }

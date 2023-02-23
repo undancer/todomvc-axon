@@ -50,35 +50,6 @@ postgresql = { module = "org.postgresql:postgresql" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang3" }
 
-
-
-
-#implementation 'org.jetbrains.kotlin:kotlin-reflect'
-#implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-#implementation 'org.springframework.boot:spring-boot-starter-web'
-#implementation 'org.springframework.boot:spring-boot-starter-webflux'
-#implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
-#//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-#implementation project(":core")
-#implementation project(":data")
-#implementation project(":domain")
-#//    implementation project(":ui:react")
-#implementation project(":ui:vite-vue")
-#implementation 'org.axonframework:axon-spring-boot-starter'
-#implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-#//    implementation 'com.querydsl:querydsl-jpa'
-#//    implementation 'javax.persistence:javax.persistence-api:2.2'
-#runtimeOnly 'org.postgresql:postgresql'
-#// https://mvnrepository.com/artifact/io.projectreactor.kotlin/reactor-kotlin-extensions
-#implementation 'io.projectreactor.kotlin:reactor-kotlin-extensions'
-#
-#//    implementation 'io.projectreactor.spring:reactor-spring-webmvc'
-#//    implementation 'io.projectreactor:reactor-bom'
-#//    implementation 'io.projectreactor:reactor-kotlin-extensions'
-#implementation 'com.google.guava:guava'
-#implementation 'org.apache.commons:commons-lang3'
-
-
 [bundles]
 axon = ["axon-core", "axon-spring", "axon-spring-boot-starter"]
 

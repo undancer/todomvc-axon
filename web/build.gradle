@@ -16,7 +16,8 @@ dependencies {
     implementation project(":data")
     implementation project(":domain")
 //    implementation project(":ui:react")
-    implementation project(":ui:vite-vue")
+    implementation project(":ui:vite-react")
+//    implementation project(":ui:vite-vue")
     implementation libs.axon.spring.boot.starter
     implementation libs.spring.boot.starter.data.jpa
 //    implementation 'com.querydsl:querydsl-jpa'

@@ -21,6 +21,7 @@ jar {
     group = 'build'
     from("dist") {
         include("index.html")
+        include("*.svg")
         include("assets/**/*")
         into("META-INF/resources")
     }

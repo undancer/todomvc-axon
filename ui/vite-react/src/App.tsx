@@ -1,34 +1,50 @@
-import {useState} from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import * as React from 'react'
+// import './App.css';
+import 'todomvc-app-css/index.css';
+import Footer from "./Footer";
+import Header from "./Header";
+import TogglePanel from "./TogglePanel";
+import FilteredList from "./FilteredList";
+import {Dispatch} from "redux";
+import {connect} from "react-redux";
+import {initData} from "./actions";
+import {Route, Routes} from 'react-router-dom';
+import {withRouter} from './routes';
 
-function App() {
-    const [count, setCount] = useState(0)
+const mapStateToProps = (state: any) => ({});
 
-    return (
-        <div className="App">
-            <div>
-                <a href="https://vitejs.dev" target="_blank">
-                    <img src="/vite.svg" className="logo" alt="Vite logo"/>
-                </a>
-                <a href="https://reactjs.org" target="_blank">
-                    <img src={reactLogo} className="logo react" alt="React logo"/>
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-        </div>
-    )
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+// @ts-ignore
+    initData: () => dispatch(initData())
+});
+
+interface AppProps {
+    initData: () => void
 }
 
-export default App
+class App extends React.Component<AppProps> {
+
+    componentDidMount() {
+        const {initData} = this.props;
+        initData();
+    }
+
+    public render() {
+        return (
+            <section className="todoapp">
+                <Header/>
+                <section className="main">
+                    <TogglePanel/>
+                    <Routes>
+                        <Route path="/" element={<FilteredList filter="all"/>}/>
+                        <Route path="/active" element={<FilteredList filter="active"/>}/>
+                        <Route path="/completed" element={<FilteredList filter="completed"/>}/>
+                    </Routes>
+                </section>
+                <Footer/>
+            </section>
+        );
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

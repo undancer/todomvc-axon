@@ -11,13 +11,13 @@ kapt {
 
 dependencies {
     implementation project(":core")
-    implementation 'org.axonframework:axon-core'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'com.querydsl:querydsl-jpa'
+    implementation libs.axon.core
+    implementation libs.spring.boot.starter.data.jpa
+    implementation libs.querydsl.jpa
 //    kapt 'com.querydsl:querydsl-apt'
-    kapt 'org.hibernate:hibernate-jpamodelgen'
+    kapt libs.hibernate.jpamodelgen
     implementation 'javax.persistence:javax.persistence-api:2.2'
-    runtimeOnly 'org.postgresql:postgresql'
-    implementation 'com.google.guava:guava'
-    implementation 'org.apache.commons:commons-lang3'
+    runtimeOnly libs.postgresql
+    implementation libs.guava
+    implementation libs.commons.lang3
 }

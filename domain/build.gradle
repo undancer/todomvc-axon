@@ -9,6 +9,6 @@ plugins {
 dependencies {
     implementation project(":core")
     implementation project(":data")
-    implementation 'org.axonframework:axon-spring'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation libs.axon.spring
+    implementation libs.spring.boot.starter.data.jpa
 }

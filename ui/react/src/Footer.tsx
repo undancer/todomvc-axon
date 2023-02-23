@@ -3,8 +3,8 @@ import {MouseEvent} from "react";
 import {Dispatch} from "redux";
 import {clearCompleted} from "./actions";
 import {connect} from "react-redux";
-import {RouteComponentProps, withRouter} from "react-router";
 import {NavLink} from "react-router-dom";
+import {withRouter} from "./routes";
 
 
 const mapStateToProps = (state: { todo: { items: Todo[] } }) => ({
@@ -20,7 +20,7 @@ interface FooterProps {
     onClearCompleted: () => void,
 }
 
-class Footer extends React.Component<FooterProps & RouteComponentProps> {
+class Footer extends React.Component<FooterProps> {
 
     handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         const {onClearCompleted} = this.props;
@@ -36,18 +36,17 @@ class Footer extends React.Component<FooterProps & RouteComponentProps> {
                 <ul className="filters">
                     <li>
                         <NavLink
-                            exact
-                            activeClassName="selected"
+                            className={(isActive) => isActive ? "selected" : ""}
                             to="/">All</NavLink>
                     </li>
                     <li>
                         <NavLink
-                            activeClassName="selected"
+                            className={(isActive) => isActive ? "selected" : ""}
                             to="/active">Active</NavLink>
                     </li>
                     <li>
                         <NavLink
-                            activeClassName="selected"
+                            className={(isActive) => isActive ? "selected" : ""}
                             to="/completed">Completed</NavLink>
                     </li>
                 </ul>

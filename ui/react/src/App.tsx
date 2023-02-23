@@ -3,12 +3,13 @@ import * as React from 'react';
 import 'todomvc-app-css/index.css';
 import Footer from "./Footer";
 import Header from "./Header";
-import {Route, RouteComponentProps, Switch, withRouter} from "react-router";
 import TogglePanel from "./TogglePanel";
 import FilteredList from "./FilteredList";
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
 import {initData} from "./actions";
+import {Route, Routes} from 'react-router-dom';
+import {withRouter} from './routes';
 
 const mapStateToProps = (state: any) => ({});
 
@@ -21,7 +22,7 @@ interface AppProps {
     initData: () => void
 }
 
-class App extends React.Component<AppProps & RouteComponentProps> {
+class App extends React.Component<AppProps> {
 
     componentDidMount() {
         const {initData} = this.props;
@@ -34,17 +35,11 @@ class App extends React.Component<AppProps & RouteComponentProps> {
                 <Header/>
                 <section className="main">
                     <TogglePanel/>
-                    <Switch>
-                        <Route exact path="/">
-                            <FilteredList filter="all"/>
-                        </Route>
-                        <Route path="/active">
-                            <FilteredList filter="active"/>
-                        </Route>
-                        <Route path="/completed">
-                            <FilteredList filter="completed"/>
-                        </Route>
-                    </Switch>
+                    <Routes>
+                        <Route path="/" element={<FilteredList filter="all"/>}/>
+                        <Route path="/active" element={<FilteredList filter="active"/>}/>
+                        <Route path="/completed" element={<FilteredList filter="completed"/>}/>
+                    </Routes>
                 </section>
                 <Footer/>
             </section>

@@ -22,6 +22,7 @@ jar {
     from("build") {
         include("index.html", "favicon.ico")
         include("manifest.json", "asset-manifest.json")
+        include("logo*.png", "robots.txt")
         include("*.js")
         include("static/**/*")
         into("META-INF/resources")

@@ -1,20 +1,20 @@
-import * as React from "react";
-import TodoItem from "./TodoItem";
-import {connect} from "react-redux";
+import * as React from 'react'
+import { connect } from 'react-redux'
+import TodoItem from './TodoItem'
 
 const mapStateToProps = (state: any) => ({
-    editing: state.todo.editing,
-});
+  editing: state.todo.editing,
+})
 
 interface TodoListProps {
-    editing: number,
-    list: Todo[]
+  editing: number
+  list: Todo[]
 }
 
 class TodoList extends React.Component<TodoListProps> {
-    render() {
-        const {list, editing} = this.props;
-        return (
+  render() {
+    const { list, editing } = this.props
+    return (
             <ul className="todo-list">
                 {
                     list.map((item: Todo) => (
@@ -28,8 +28,8 @@ class TodoList extends React.Component<TodoListProps> {
                     ))
                 }
             </ul>
-        );
-    }
+    )
+  }
 }
 
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps)(TodoList)

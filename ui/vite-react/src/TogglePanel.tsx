@@ -1,37 +1,36 @@
-import * as React from "react";
-import {Dispatch} from "redux";
-import {connect} from "react-redux";
-import {toggleAll} from "./actions";
+import * as React from 'react'
+import type { Dispatch } from 'redux'
+import { connect } from 'react-redux'
+import { toggleAll } from './actions'
 
 const mapStateToProps = (state: { todo: { items: [] } }) => ({
-    items: state.todo.items
-});
+  items: state.todo.items,
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-    onToggleAll: (completed: boolean) => dispatch(toggleAll(completed)),
-});
+  onToggleAll: (completed: boolean) => dispatch(toggleAll(completed)),
+})
 
 interface TogglePanelProps {
-    items: Todo[],
-    onToggleAll: (completed: boolean) => void,
+  items: Todo[]
+  onToggleAll: (completed: boolean) => void
 }
 
 class TogglePanel extends React.Component<TogglePanelProps> {
+  handleClick = () => {
+    const { onToggleAll } = this.props
+    onToggleAll(!this.isAllCompleted())
+  }
 
-    handleClick = () => {
-        const {onToggleAll} = this.props;
-        onToggleAll(!this.isAllCompleted());
-    };
+  isAllCompleted = () => {
+    const { items } = this.props
+    const count = items.length
+    const completed = items.filter((item: Todo) => item.completed).length
+    return count === completed
+  }
 
-    isAllCompleted = () => {
-        const {items} = this.props;
-        const count = items.length;
-        const completed = items.filter((item: Todo) => item.completed).length;
-        return count === completed;
-    };
-
-    render() {
-        return (
+  render() {
+    return (
             <span>
                 <input
                     id="toggle-all"
@@ -46,8 +45,8 @@ class TogglePanel extends React.Component<TogglePanelProps> {
                     Mark all as complete
                 </label>
             </span>
-        )
-    }
+    )
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TogglePanel);
+export default connect(mapStateToProps, mapDispatchToProps)(TogglePanel)

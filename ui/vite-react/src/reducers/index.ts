@@ -10,6 +10,7 @@ import {
   TYPE_TOGGLE_ALL,
 } from '../actions'
 import { addToList, deleteItem, updateStatus, updateText } from '../utils/data'
+import type { Todo } from '../Todo'
 
 interface TodoState {
   items: Todo[]

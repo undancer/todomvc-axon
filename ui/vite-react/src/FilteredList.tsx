@@ -2,6 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import TodoList from './TodoList'
 import { applyFilter } from './utils'
+import type { Todo } from './Todo'
 
 const mapStateToProps = (state: { todo: { items: Todo[] } }) => ({
   items: state.todo.items,

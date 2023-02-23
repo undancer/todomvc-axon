@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import TodoItem from './TodoItem'
+import type { Todo } from './Todo'
 
 const mapStateToProps = (state: any) => ({
   editing: state.todo.editing,

@@ -2,6 +2,7 @@ import * as React from 'react'
 import type { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { toggleAll } from './actions'
+import type { Todo } from './Todo'
 
 const mapStateToProps = (state: { todo: { items: [] } }) => ({
   items: state.todo.items,

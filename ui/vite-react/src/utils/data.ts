@@ -1,4 +1,5 @@
 import update from 'immutability-helper'
+import type { Todo } from '../Todo'
 
 const getAll = () => {
   return [

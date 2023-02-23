@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { clearCompleted } from './actions'
 import { withRouter } from './routes'
+import type { Todo } from './Todo'
 
 const mapStateToProps = (state: { todo: { items: Todo[] } }) => ({
   items: state.todo.items,

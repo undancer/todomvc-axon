@@ -1,3 +1,5 @@
+import type { Todo } from '../Todo'
+
 const FILTER_ALL = 'all'
 const FILTER_ACTIVE = 'active'
 const FILTER_COMPLETED = 'completed'

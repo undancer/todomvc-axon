@@ -1,7 +1,7 @@
 package com.undancer.app.querys
 
 import com.undancer.app.values.TodoId
-import org.axonframework.commandhandling.TargetAggregateIdentifier
+import org.axonframework.modelling.command.TargetAggregateIdentifier
 
 abstract class TodoItemQuery(@TargetAggregateIdentifier open val id: TodoId)
 

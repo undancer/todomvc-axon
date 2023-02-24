@@ -11,14 +11,15 @@ import org.axonframework.queryhandling.QueryHandler
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.util.*
+import javax.annotation.Resource
 
 @Component
 class TodoListProjection {
 
-    @Autowired
+    @Resource
     lateinit var todoListJpaRepository: TodoListJpaRepository
 
-    @Autowired
+    @Resource
     lateinit var todoItemJpaRepository: TodoItemJpaRepository
 
     @QueryHandler

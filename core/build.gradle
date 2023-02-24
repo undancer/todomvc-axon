@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation libs.axon.core
+    implementation libs.axon.modelling
 }

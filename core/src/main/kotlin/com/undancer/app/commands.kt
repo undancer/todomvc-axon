@@ -1,7 +1,7 @@
 package com.undancer.app.commands
 
 import com.undancer.app.values.TodoId
-import org.axonframework.commandhandling.TargetAggregateIdentifier
+import org.axonframework.modelling.command.TargetAggregateIdentifier
 
 abstract class TodoCommand(
     @TargetAggregateIdentifier

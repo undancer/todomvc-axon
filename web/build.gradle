@@ -31,3 +31,9 @@ dependencies {
     implementation libs.guava
     implementation libs.commons.lang3
 }
+
+configurations {
+    implementation {
+        exclude group: 'org.axonframework', module: 'axon-server-connector'
+    }
+}

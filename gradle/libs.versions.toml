@@ -2,12 +2,12 @@
 java = "11"
 #java = "17"
 kotlin = "1.8.10"
-#boot = "3.0.2"
-spring-boot = "2.5.0"
+spring-boot = "2.7.0"
+#spring-boot = "3.0.0"
 dependency-management = "1.1.0"
 node-plugin = "3.5.1"
-#hibernate = ""
-axon = "3.4.4"
+hibernate = "5.6.15.Final"
+axon = "4.5.10"
 querydsl = "5.0.0"
 guava = "31.1-jre"
 commons-lang3 = "3.12.0"
@@ -37,9 +37,12 @@ jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-
 
 reactor-kotlin-extensions = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions" }
 
-hibernate-jpamodelgen = { module = "org.hibernate:hibernate-jpamodelgen" }
+hibernate-core = { module = "org.hibernate:hibernate-core", version.ref = "hibernate" }
+hibernate-jpamodelgen = { module = "org.hibernate:hibernate-jpamodelgen", version.ref = "hibernate" }
 
-axon-core = { group = "org.axonframework", name = "axon-core", version.ref = "axon" }
+axon-eventsourcing = { group = "org.axonframework", name = "axon-eventsourcing", version.ref = "axon" }
+axon-messaging = { group = "org.axonframework", name = "axon-messaging", version.ref = "axon" }
+axon-modelling = { group = "org.axonframework", name = "axon-modelling", version.ref = "axon" }
 axon-spring = { group = "org.axonframework", name = "axon-spring", version.ref = "axon" }
 axon-spring-boot-starter = { group = "org.axonframework", name = "axon-spring-boot-starter", version.ref = "axon" }
 
@@ -51,7 +54,7 @@ guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang3" }
 
 [bundles]
-axon = ["axon-core", "axon-spring", "axon-spring-boot-starter"]
+axon = ["axon-eventsourcing", "axon-messaging", "axon-modelling", "axon-spring", "axon-spring-boot-starter"]
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }

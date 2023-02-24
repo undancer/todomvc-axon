@@ -81,6 +81,7 @@ allprojects {
         imports {
 //            // https://mvnrepository.com/artifact/org.axonframework/axon-bom
 //            mavenBom "org.axonframework:axon-bom:${project.property('axon.version')}"
+            mavenBom "org.axonframework:axon-bom:${libs.versions.axon.get()}"
 //            // https://mvnrepository.com/artifact/org.springframework.shell/spring-shell-dependencies
 //            mavenBom "org.springframework.shell:spring-shell-dependencies:${project.property('spring-shell.version')}"
 //            // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies
@@ -93,17 +94,18 @@ allprojects {
 //            mavenBom "com.vaadin:vaadin-bom:${project.property('vaadin.version')}"
 //            // https://mvnrepository.com/artifact/com.querydsl/querydsl-bom
 //            mavenBom("com.querydsl:querydsl-bom:${property("querydsl.version")}")
+            mavenBom("com.querydsl:querydsl-bom:${libs.versions.querydsl.get()}")
         }
 
         dependencies {
-            dependencySet(group: 'org.axonframework', version: "${libs.versions.axon.get()}") {
-                entry 'axon-core'
-                entry 'axon-spring'
-                entry 'axon-spring-boot-starter'
-            }
-            dependencySet(group: 'com.google.guava', version: "${libs.versions.guava.get()}") {
-                entry 'guava'
-            }
+//            dependencySet(group: 'org.axonframework', version: "${libs.versions.axon.get()}") {
+//                entry 'axon-core'
+//                entry 'axon-spring'
+//                entry 'axon-spring-boot-starter'
+//            }
+//            dependencySet(group: 'com.google.guava', version: "${libs.versions.guava.get()}") {
+//                entry 'guava'
+//            }
         }
     }
 

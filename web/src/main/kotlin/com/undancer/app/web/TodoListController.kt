@@ -5,13 +5,12 @@ import com.undancer.app.entity.TodoItem
 import com.undancer.app.querys.FindTodoItemQuery
 import com.undancer.app.values.TodoId
 import org.axonframework.commandhandling.gateway.CommandGateway
+import org.axonframework.messaging.responsetypes.ResponseTypes
 import org.axonframework.queryhandling.QueryGateway
-import org.axonframework.queryhandling.responsetypes.ResponseTypes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-//import reactor.core.publisher.toMono
 import reactor.kotlin.core.publisher.toMono
 
 @RestController

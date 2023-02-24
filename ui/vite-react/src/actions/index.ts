@@ -106,7 +106,7 @@ export const initData = () =>
       .then((response: Response) => response.json())
       .then((json: any) => {
         let todo = json.identifier
-        todo = '61561d91-14b5-478b-8dd4-bd560fba28d1'
+        todo = '0ce45879-1d2e-449b-9bad-8734c1e6f9ed'
         dispatch({ type: 'init', todo })
         return api.initData(todo)
       }).then((response: Response) => response.json())

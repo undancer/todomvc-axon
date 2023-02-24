@@ -1,5 +1,10 @@
 plugins {
-
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.kotlin.jpa)
+//    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.dependency.management)
 }
 
 //name = "todo-data"
@@ -20,4 +25,16 @@ dependencies {
     runtimeOnly libs.postgresql
     implementation libs.guava
     implementation libs.commons.lang3
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
 }

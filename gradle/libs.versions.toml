@@ -11,11 +11,13 @@ axon = "4.5.10"
 querydsl = "5.0.0"
 guava = "31.1-jre"
 commons-lang3 = "3.12.0"
+postgresql = "42.5.4"
 
 [libraries]
 
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 
 plugin-spring-boot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
@@ -48,7 +50,7 @@ axon-spring-boot-starter = { group = "org.axonframework", name = "axon-spring-bo
 
 querydsl-jpa = { module = "com.querydsl:querydsl-jpa", version.ref = "querydsl" }
 
-postgresql = { module = "org.postgresql:postgresql" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang3" }
@@ -57,5 +59,12 @@ commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.
 axon = ["axon-eventsourcing", "axon-messaging", "axon-modelling", "axon-spring", "axon-spring-boot-starter"]
 
 [plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
+kotlin-jpa = { id = "org.jetbrains.kotlin.plugin.jpa", version.ref = "kotlin" }
+
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 dependency-management = { id = "io.spring.dependency-management", version.ref = "dependency-management" }
+
+node = { id = "com.github.node-gradle.node", version.ref = "node-plugin" }

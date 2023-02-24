@@ -1,5 +1,9 @@
 plugins {
-    id 'org.springframework.boot'
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.kotlin.jpa)
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.dependency.management)
 }
 
 // <artifactId>todo-web</artifactId>
@@ -35,5 +39,17 @@ dependencies {
 configurations {
     implementation {
         exclude group: 'org.axonframework', module: 'axon-server-connector'
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
     }
 }

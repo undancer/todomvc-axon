@@ -3,6 +3,10 @@ package com.undancer.app.config
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.axonframework.common.jpa.EntityManagerProvider
 import org.axonframework.common.transaction.TransactionManager
+import org.axonframework.eventhandling.TrackingEventProcessor
+import org.axonframework.eventhandling.TrackingEventProcessorConfiguration
+import org.axonframework.eventhandling.tokenstore.TokenStore
+import org.axonframework.eventhandling.tokenstore.jpa.JpaTokenStore
 import org.axonframework.eventsourcing.eventstore.EventStorageEngine
 import org.axonframework.eventsourcing.eventstore.jpa.JpaEventStorageEngine
 import org.axonframework.serialization.Serializer
@@ -39,6 +43,21 @@ class AxonConfig {
             .transactionManager(transactionManager())
             .eventSerializer(jacksonSerializer())
             .snapshotSerializer(jacksonSerializer())
+            .build()
+    }
+
+    @Bean
+    fun tokenStoreJpa(): TokenStore {
+        return JpaTokenStore.builder()
+            .entityManagerProvider(entityManagerProvider())
+            .serializer(jacksonSerializer())
+//            .claimTimeout(Duration.ofSeconds(30))
+            .build()
+    }
+
+    fun trackingEventProcessor(): TrackingEventProcessor {
+        return TrackingEventProcessor.builder()
+            .trackingEventProcessorConfiguration(TrackingEventProcessorConfiguration.forSingleThreadedProcessing())
             .build()
     }
 

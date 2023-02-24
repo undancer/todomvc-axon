@@ -12,6 +12,9 @@ plugins {
 dependencies {
     implementation libs.kotlin.reflect
     implementation libs.kotlin.stdlib.jdk8
+    // https://mvnrepository.com/artifact/org.axonframework/axon-bom
+    implementation platform("org.axonframework:axon-bom:${libs.versions.axon.get()}")
+    
     implementation libs.spring.boot.starter.web
     implementation libs.spring.boot.starter.webflux
     implementation libs.jackson.module.kotlin
@@ -22,6 +25,7 @@ dependencies {
 //    implementation project(":ui:react")
     implementation project(":ui:vite-react")
 //    implementation project(":ui:vite-vue")
+//    implementation 'jakarta.persistence:jakarta.persistence-api:3.1.0'
     implementation libs.axon.spring.boot.starter
     implementation libs.spring.boot.starter.data.jpa
 //    implementation 'com.querydsl:querydsl-jpa'

@@ -6,12 +6,11 @@ import com.undancer.app.entity.jpa.TodoItemJpaRepository
 import com.undancer.app.entity.jpa.TodoListJpaRepository
 import com.undancer.app.evnets.*
 import com.undancer.app.querys.FindTodoItemQuery
+import jakarta.annotation.Resource
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.util.*
-import javax.annotation.Resource
 
 @Component
 class TodoListProjection {

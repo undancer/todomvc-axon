@@ -28,3 +28,9 @@ jar {
         into("META-INF/resources")
     }
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
+}

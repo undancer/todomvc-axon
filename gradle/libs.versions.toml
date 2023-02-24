@@ -1,24 +1,17 @@
 [versions]
-java = "11"
-#java = "17"
+java = "17"
 kotlin = "1.8.10"
-spring-boot = "2.7.0"
-#spring-boot = "3.0.0"
+spring-boot = "3.0.3"
 dependency-management = "1.1.0"
 node-plugin = "3.5.1"
-hibernate = "5.6.15.Final"
-axon = "4.5.10"
+hibernate = "6.1.7.Final"
+axon = "4.7.0"
 querydsl = "5.0.0"
 guava = "31.1-jre"
 commons-lang3 = "3.12.0"
 postgresql = "42.5.4"
 
 [libraries]
-
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
-kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
-kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 
 plugin-spring-boot = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 plugin-dependency-management = { module = "io.spring.dependency-management:io.spring.dependency-management.gradle.plugin", version.ref = "dependency-management" }
@@ -28,8 +21,13 @@ plugin-kotlin-kapt = { module = "org.jetbrains.kotlin.kapt:org.jetbrains.kotlin.
 plugin-kotlin-spring = { module = "org.jetbrains.kotlin.plugin.spring:org.jetbrains.kotlin.plugin.spring.gradle.plugin", version.ref = "kotlin" }
 plugin-kotlin-jpa = { module = "org.jetbrains.kotlin.plugin.jpa:org.jetbrains.kotlin.plugin.jpa.gradle.plugin", version.ref = "kotlin" }
 
-plugin-node = { module = "com.github.node-gradle:gradle-node-plugin", version.ref = "node-plugin" }
 
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-stdlib-common = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlin" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+
+plugin-node = { module = "com.github.node-gradle:gradle-node-plugin", version.ref = "node-plugin" }
 
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }

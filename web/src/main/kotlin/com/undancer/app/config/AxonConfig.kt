@@ -1,6 +1,8 @@
 package com.undancer.app.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import jakarta.annotation.Resource
+import jakarta.persistence.EntityManager
 import org.axonframework.common.jpa.EntityManagerProvider
 import org.axonframework.common.transaction.TransactionManager
 import org.axonframework.eventhandling.TrackingEventProcessor
@@ -17,7 +19,6 @@ import org.springframework.boot.autoconfigure.domain.EntityScan
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.transaction.PlatformTransactionManager
-import javax.annotation.Resource
 
 @Configuration
 @EntityScan(
@@ -35,6 +36,9 @@ class AxonConfig {
 
     @Resource
     lateinit var transactionManager: PlatformTransactionManager
+
+    @Resource
+    lateinit var entityManager: EntityManager
 
     @Bean
     fun eventStorageEngineJpa(): EventStorageEngine {
@@ -64,6 +68,7 @@ class AxonConfig {
     @Bean
     fun entityManagerProvider(): EntityManagerProvider {
         return ContainerManagedEntityManagerProvider()
+            .also { it.entityManager = entityManager }
     }
 
     fun transactionManager(): TransactionManager {

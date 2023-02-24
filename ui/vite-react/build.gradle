@@ -31,3 +31,9 @@ jar {
 //        into("META-INF/static")
 //    }
 }
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
+}

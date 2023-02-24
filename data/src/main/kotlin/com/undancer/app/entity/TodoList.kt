@@ -1,7 +1,7 @@
 package com.undancer.app.entity
 
 import com.google.common.collect.Lists
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "todo")

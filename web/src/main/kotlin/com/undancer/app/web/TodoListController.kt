@@ -4,10 +4,10 @@ import com.undancer.app.commands.*
 import com.undancer.app.entity.TodoItem
 import com.undancer.app.querys.FindTodoItemQuery
 import com.undancer.app.values.TodoId
+import jakarta.annotation.Resource
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.messaging.responsetypes.ResponseTypes
 import org.axonframework.queryhandling.QueryGateway
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -17,10 +17,10 @@ import reactor.kotlin.core.publisher.toMono
 @RequestMapping(path = ["/todo"])
 class TodoListController {
 
-    @Autowired
+    @Resource
     lateinit var commandGateway: CommandGateway
 
-    @Autowired
+    @Resource
     lateinit var queryGateway: QueryGateway
 
     @GetMapping

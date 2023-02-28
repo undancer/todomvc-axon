@@ -9,7 +9,9 @@ axon = "4.7.0"
 querydsl = "5.0.0"
 guava = "31.1-jre"
 commons-lang3 = "3.12.0"
+commons-collections4 = "4.4"
 postgresql = "42.5.4"
+junit = "5.8.1"
 
 [libraries]
 
@@ -29,29 +31,71 @@ kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", versi
 
 plugin-node = { module = "com.github.node-gradle:gradle-node-plugin", version.ref = "node-plugin" }
 
-spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
-spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux", version.ref = "spring-boot" }
-spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "spring-boot" }
+spring-boot-starter-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "spring-boot" }
+spring-boot-starter-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "spring-boot" }
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "spring-boot" }
+spring-boot-starter-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux", version.ref = "spring-boot" }
+spring-boot-starter-web-services = { group = "org.springframework.boot", name = "spring-boot-starter-web-services", version.ref = "spring-boot" }
+spring-boot-starter-cache = { group = "org.springframework.boot", name = "spring-boot-starter-cache", version.ref = "spring-boot" }
+spring-boot-starter-data-jdbc = { group = "org.springframework.boot", name = "spring-boot-starter-data-jdbc", version.ref = "spring-boot" }
+spring-boot-starter-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "spring-boot" }
+spring-boot-starter-data-redis = { group = "org.springframework.boot", name = "spring-boot-starter-data-redis", version.ref = "spring-boot" }
+spring-boot-starter-amqp = { group = "org.springframework.boot", name = "spring-boot-starter-amqp", version.ref = "spring-boot" }
+spring-boot-starter-graphql = { group = "org.springframework.boot", name = "spring-boot-starter-graphql", version.ref = "spring-boot" }
+spring-boot-starter-jdbc = { group = "org.springframework.boot", name = "spring-boot-starter-jdbc", version.ref = "spring-boot" }
+spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "spring-boot" }
+spring-boot-starter-hateoas = { group = "org.springframework.boot", name = "spring-boot-starter-hateoas", version.ref = "spring-boot" }
+spring-boot-starter-security = { group = "org.springframework.boot", name = "spring-boot-starter-security", version.ref = "spring-boot" }
 
+
+jackson-datatype-hibernate5-jakarta = { group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-hibernate5-jakarta", version = "2.14.2" }
+jackson-datatype-joda = { group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-joda", version = "2.14.2" }
+jackson-datatype-joda-money = { group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-joda-money", version = "2.14.2" }
 jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin" }
 
 reactor-kotlin-extensions = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions" }
 
-hibernate-core = { module = "org.hibernate:hibernate-core", version.ref = "hibernate" }
-hibernate-jpamodelgen = { module = "org.hibernate:hibernate-jpamodelgen", version.ref = "hibernate" }
+hibernate-core = { group = "org.hibernate.orm", name = "hibernate-core", version.ref = "hibernate" }
+hibernate-graalvm = { group = "org.hibernate.orm", name = "hibernate-graalvm", version.ref = "hibernate" }
+hibernate-jcache = { group = "org.hibernate.orm", name = "hibernate-jcache", version.ref = "hibernate" }
+hibernate-jpamodelgen = { group = "org.hibernate.orm", name = "hibernate-jpamodelgen", version.ref = "hibernate" }
 
+axon-bom = { group = "org.axonframework", name = "axon-bom", version.ref = "axon" }
 axon-eventsourcing = { group = "org.axonframework", name = "axon-eventsourcing", version.ref = "axon" }
 axon-messaging = { group = "org.axonframework", name = "axon-messaging", version.ref = "axon" }
 axon-modelling = { group = "org.axonframework", name = "axon-modelling", version.ref = "axon" }
 axon-spring = { group = "org.axonframework", name = "axon-spring", version.ref = "axon" }
 axon-spring-boot-starter = { group = "org.axonframework", name = "axon-spring-boot-starter", version.ref = "axon" }
+axon-amqp-spring-boot-starter = { group = "org.axonframework.extensions.amqp", name = "axon-amqp-spring-boot-starter", version.ref = "axon" }
+axon-springcloud-spring-boot-starter = { group = "org.axonframework.extensions.springcloud", name = "axon-springcloud-spring-boot-starter", version.ref = "axon" }
+axon-kotlin = { group = "org.axonframework.extensions.kotlin", name = "axon-kotlin", version.ref = "axon" }
 
-querydsl-jpa = { module = "com.querydsl:querydsl-jpa", version.ref = "querydsl" }
+#axon-jgroups-spring-boot-starter = { module = "org.axonframework.extensions.jgroups:axon-jgroups-spring-boot-starter" }
+#axon-tracing-spring-boot-starter = { module = "org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter" }
+#axon-kafka-spring-boot-starter = { module = "org.axonframework.extensions.kafka:axon-kafka-spring-boot-starter" }
+#axon-reactor-spring-boot-starter = { module = "org.axonframework.extensions.reactor:axon-reactor-spring-boot-starter" }
+#multitenancy-spring-boot-starter = { module = "org.axonframework.extensions.multitenancy:multitenancy-spring-boot-starter" }
+
+querydsl-apt = { group = "com.querydsl", name = "querydsl-apt", version.ref = "querydsl" }
+querydsl-codegen = { group = "com.querydsl", name = "querydsl-codegen", version.ref = "querydsl" }
+querydsl-core = { group = "com.querydsl", name = "querydsl-core", version.ref = "querydsl" }
+querydsl-sql-spring = { group = "com.querydsl", name = "querydsl-sql-spring", version.ref = "querydsl" }
+querydsl-jpa = { group = "com.querydsl", name = "querydsl-jpa", version.ref = "querydsl" }
+#querydsl-jpa-jakarta = { group = "com.querydsl", name = "querydsl-jpa", version.ref = "querydsl", classifier = "jakarta" }
+querydsl-jpa-codegen = { group = "com.querydsl", name = "querydsl-jpa-codegen", version.ref = "querydsl" }
+querydsl-kotlin = { group = "com.querydsl", name = "querydsl-kotlin", version.ref = "querydsl" }
+querydsl-kotlin-codegen = { group = "com.querydsl", name = "querydsl-kotlin-codegen", version.ref = "querydsl" }
 
 postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava" }
 commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version.ref = "commons-lang3" }
+commons-collections4 = { group = "org.apache.commons", name = "commons-collections4", version.ref = "commons-collections4" }
+
+junit-jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junit-jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
 
 [bundles]
 axon = ["axon-eventsourcing", "axon-messaging", "axon-modelling", "axon-spring", "axon-spring-boot-starter"]
@@ -66,3 +110,4 @@ spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
 dependency-management = { id = "io.spring.dependency-management", version.ref = "dependency-management" }
 
 node = { id = "com.github.node-gradle.node", version.ref = "node-plugin" }
+git-properties = { id = "com.gorylenko.gradle-git-properties", version = "2.4.1" }

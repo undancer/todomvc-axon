@@ -1,0 +1,104 @@
+plugins {
+    alias libs.plugins.kotlin.jvm
+    alias libs.plugins.kotlin.kapt
+    alias libs.plugins.kotlin.spring
+    alias libs.plugins.kotlin.jpa
+    alias libs.plugins.spring.boot
+    alias libs.plugins.dependency.management
+
+//    // https://mvnrepository.com/artifact/org.springframework.boot.aot/org.springframework.boot.aot.gradle.plugin
+//    implementation 'org.springframework.boot.aot:org.springframework.boot.aot.gradle.plugin:3.0.3'
+
+    alias libs.plugins.git.properties
+
+    id("org.springdoc.openapi-gradle-plugin") version "1.6.0"
+
+}
+
+group 'org.example'
+version 'unspecified'
+
+dependencies {
+
+    implementation libs.kotlin.stdlib.jdk8
+    implementation libs.kotlin.reflect
+
+    implementation platform(libs.axon.bom)
+    implementation platform(libs.spring.boot.dependencies)
+
+    implementation libs.spring.boot.starter.actuator
+    implementation libs.spring.boot.starter.json
+    implementation libs.spring.boot.starter.logging
+    implementation libs.spring.boot.starter.web
+//    implementation libs.spring.boot.starter.web.services
+    implementation libs.spring.boot.starter.data.jdbc
+    implementation libs.spring.boot.starter.data.jpa
+    implementation libs.spring.boot.starter.data.redis
+    implementation libs.spring.boot.starter.cache
+    implementation libs.spring.boot.starter.validation
+
+    implementation libs.spring.boot.starter.hateoas
+
+//    implementation libs.spring.boot.starter.security
+
+//    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+//    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-webmvc-core
+    implementation 'org.springdoc:springdoc-openapi-webmvc-core:1.6.14'
+
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
+
+//    // https://mvnrepository.com/artifact/io.springfox/springfox-boot-starter
+//    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+//    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-annotations
+//    implementation 'io.swagger.core.v3:swagger-annotations:2.2.8'
+//    // https://mvnrepository.com/artifact/io.swagger.core.v3/swagger-models
+//    implementation 'io.swagger.core.v3:swagger-models:2.2.8'
+
+    implementation libs.axon.spring.boot.starter
+    implementation libs.axon.kotlin
+
+    implementation libs.querydsl.sql.spring
+    implementation(group: "com.querydsl", name: "querydsl-jpa", version: "5.0.0", classifier: "jakarta")
+    kapt(group: "com.querydsl", name: "querydsl-apt", version: "5.0.0", classifier: "jakarta")
+
+    implementation libs.hibernate.core
+    implementation libs.hibernate.jcache
+//    implementation libs.hibernate.graalvm
+
+    implementation libs.postgresql
+    implementation libs.guava
+    implementation libs.commons.lang3
+    implementation libs.commons.collections4
+
+    kapt libs.hibernate.jpamodelgen
+
+    testImplementation libs.junit.jupiter.api
+    testRuntimeOnly libs.junit.jupiter.engine
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
+}
+
+kotlin {
+    jvmToolchain {
+        languageVersion = JavaLanguageVersion.of libs.versions.java.get()
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+kapt {
+    keepJavacAnnotationProcessors = true
+}
+
+springBoot {
+    buildInfo()
+}

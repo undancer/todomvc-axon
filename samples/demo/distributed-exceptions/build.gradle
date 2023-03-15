@@ -1,0 +1,8 @@
+plugins {
+    alias libs.plugins.kotlin.jvm
+}
+
+dependencies {
+    implementation libs.axon.spring.boot.starter
+    implementation libs.spring.boot.starter.json
+}

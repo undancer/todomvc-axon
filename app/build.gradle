@@ -61,8 +61,8 @@ dependencies {
     implementation libs.axon.kotlin
 
     implementation libs.querydsl.sql.spring
-    implementation(group: "com.querydsl", name: "querydsl-jpa", version: "5.0.0", classifier: "jakarta")
-    kapt(group: "com.querydsl", name: "querydsl-apt", version: "5.0.0", classifier: "jakarta")
+    implementation variantOf(libs.querydsl.jpa) { classifier("jakarta") }
+    kapt variantOf(libs.querydsl.apt) { classifier("jakarta") }
 
     implementation libs.hibernate.core
     implementation libs.hibernate.jcache

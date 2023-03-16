@@ -6,12 +6,14 @@ dependency-management = "1.1.0"
 node-plugin = "3.5.1"
 hibernate = "6.1.7.Final"
 axon = "4.7.2"
+axon-bom = "4.7.2"
+axon-extensions-mongo = "4.2"
 querydsl = "5.0.0"
 guava = "31.1-jre"
 commons-lang3 = "3.12.0"
 commons-collections4 = "4.4"
 postgresql = "42.5.4"
-junit = "5.8.1"
+junit = "5.9.2"
 
 [libraries]
 
@@ -71,6 +73,7 @@ axon-spring-boot-starter = { group = "org.axonframework", name = "axon-spring-bo
 axon-amqp-spring-boot-starter = { group = "org.axonframework.extensions.amqp", name = "axon-amqp-spring-boot-starter", version.ref = "axon" }
 axon-springcloud-spring-boot-starter = { group = "org.axonframework.extensions.springcloud", name = "axon-springcloud-spring-boot-starter", version.ref = "axon" }
 axon-kotlin = { group = "org.axonframework.extensions.kotlin", name = "axon-kotlin", version.ref = "axon" }
+axon-extensions-mongo = { group = "org.axonframework.extensions.mongo", name = "axon-mongo", version.ref = "axon-extensions-mongo" }
 
 #axon-jgroups-spring-boot-starter = { module = "org.axonframework.extensions.jgroups:axon-jgroups-spring-boot-starter" }
 #axon-tracing-spring-boot-starter = { module = "org.axonframework.extensions.tracing:axon-tracing-spring-boot-starter" }

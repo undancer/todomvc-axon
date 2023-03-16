@@ -17,7 +17,7 @@ kapt {
 dependencies {
     implementation project(":core")
     // https://mvnrepository.com/artifact/org.axonframework/axon-bom
-    implementation platform("org.axonframework:axon-bom:${libs.versions.axon.get()}")
+    implementation platform("org.axonframework:axon-bom:${libs.versions.axon.bom.get()}")
     implementation libs.axon.modelling
     implementation libs.spring.boot.starter.data.jpa
     implementation libs.querydsl.jpa

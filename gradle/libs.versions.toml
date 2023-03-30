@@ -1,6 +1,6 @@
 [versions]
 java = "17"
-kotlin = "1.8.10"
+kotlin = "1.8.20"
 spring-boot = "3.0.4"
 dependency-management = "1.1.0"
 node-plugin = "3.5.1"
